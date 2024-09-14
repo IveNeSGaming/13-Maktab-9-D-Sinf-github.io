@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff5e8; /* Light background */
+}
+
+.Books {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap when needed */
+    justify-content: space-around; /* Adds space between the items */
+    margin: 20px;
+    gap: 20px; /* Adds space between each item */
+}
+
+.frame-container {
+    width: 30%; /* Ensures three items per row */
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59 25 7);
+}
+
+.pdf-frame {
+    width: 100%;
+    height: 450px;
+    margin: 5px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pdf-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.frame-title {
+   text-align: center;
+   font-size: 16px;
+   color: white;
+   font-weight: bold;
+   background-color: #37393b;
+   padding: 10px 0;
+   border-top: 2px solid #37393b;
+   border-radius: 0 0 10px 10px;
+   flex-shrink: 0;
+   /* Glowing effect */
+   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+
+/* Responsive design for tablet and mobile */
+@media (max-width: 1024px) {
+    .frame-container {
+        width: 45%; /* Two per row on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .frame-container {
+        width: 90%; /* One per row on mobile */
+    }
+}
