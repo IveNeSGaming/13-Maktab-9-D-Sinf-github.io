@@ -40,7 +40,6 @@
   <meta property="og:title" content="9-D Sinf">
   <meta property="title" content="9-D Sinf">
 
-
   <title>9-D Sinf - Home</title>
 
   <!-- css -->
@@ -133,6 +132,7 @@
 	</nav>
 </section>
 
+<div class="xD">
 <section data-bs-version="5.1" class="header18 cid-uo4jGuijB7 mbr-fullscreen" style="background-image: url('images/screen/1.jpeg');" style="background-color: rgb(0, 0, 0);" data-bg-image="images/Logo/Maktab 4.png">
   
 
@@ -148,7 +148,60 @@
       </div>
     </div>
   </div>
+  <script>
+    // Kursor izini faqat ".neon-cursor-area" elementida ishlatish
+    const cursorArea = document.querySelector('.xD');
+    const colors = ['rgba(255, 192, 145)'];
+
+    cursorArea.addEventListener('mousemove', function (e) {
+      // Neon izi yaratish uchun div yaratamiz
+      const trail = document.createElement('div');
+      trail.classList.add('cursor-trail');
+      cursorArea.appendChild(trail);
+
+      // Kursorning pozitsiyasi faqat ".neon-cursor-area" ichida hisoblanadi
+      const rect = cursorArea.getBoundingClientRect();
+      trail.style.left = `${e.clientX - rect.left}px`;
+      trail.style.top = `${e.clientY - rect.top}px`;
+
+      // Har bir izi uchun tasodifiy rang tanlaymiz
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      trail.style.backgroundColor = randomColor;
+
+      // Neon izi 900ms dan keyin yo'qoladi
+      setTimeout(() => {
+        trail.remove();
+      }, 900);
+    });
+  </script>
+
+  <style>
+    .cursor-trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgb(255, 192, 145), 0 0 20px rgb(255, 192, 145) 0 30px rgb(255, 192, 145);
+      animation: fadeOut 0.9s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+      }
+    }
+
+    .neon-cursor-area {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
 </section>
+
+</div>
 
 <section data-bs-version="5.1" class="people03 cid-uo4jGujUxY" id="team-1-uo4jGujUxY">
     
@@ -267,7 +320,7 @@
       <div class="item features-image col-12 col-md-6 col-lg-3">
         <div class="item-wrapper">
           <div class="item-img mb-3">
-            <img src="images/Sites/Kitob.uz.jpeg" alt="IveNeS Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
+            <img src="images/Sites/Kitob.uz.jpg" alt="IveNeS Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
           </div>
           <div class="item-content align-left">
             <h5 class="item-title mbr-fonts-style mb-2 mt-0 display-5">
@@ -417,6 +470,12 @@
     </div>
   </div>
 </section>
+
+
+
+
+
+
 
 
 
