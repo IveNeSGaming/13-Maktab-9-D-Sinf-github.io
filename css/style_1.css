@@ -124,6 +124,15 @@ strong {
   font-weight: bold;
   text-shadow: 0 0 25px #fff5e8;
 }
+h1 {
+  font-weight: bold;
+  text-shadow: 0 0 25px #fff5e8;
+  display: flex; /* Flex konteyner yaratadi */
+  justify-content: center; /* Gorizontal markazlash */
+  align-items: center; /* Vertikal markazlash */
+  height: 100vh; /* To'liq balandlik */
+  text-align: center; /* Yozuvni markazga joylash */
+}
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
   transition-delay: 9999s;
