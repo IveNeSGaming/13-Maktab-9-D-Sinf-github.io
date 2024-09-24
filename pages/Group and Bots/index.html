@@ -13,32 +13,15 @@
     
   <!-- Description of the page -->
   <meta property="og:description" content="Assalomu Alaykum Ushbu Site Maktab uchun yaratildi.">
-  <meta itemprop="description" content="Assalomu Alaykum Ushbu Site Maktab uchun yaratildi.">
   
   <!-- Link to the image that will appear in the preview -->
   <meta property="og:image" content="images/Logo/Maktab 4.png">
   
   <!-- URL of the page -->
   <meta property="og:url" content="https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/">
-  <meta itemprop="url" content="https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/">
   
   <!-- Set the type to webpage -->
   <meta property="og:type" content="website">
-
-  <meta itemprop="name" content="9-&quot;D&quot; Sinf">
-
-
-  <meta itemprop="thumbnailUrl" content="images/Logo/Maktab 4.png">
-
-  <meta itemprop="image" content="images/Logo/Maktab 4.png">
-
-  <meta itemprop="imageUrl" content="images/Logo/Maktab 4.png">
-
-  <meta property="og:image" content="images/Logo/Maktab 4.png">
-  <meta property="telegram:image" content="./img/logo/IveNeS.png:">
-
-  <meta property="og:title" content="9-D Sinf">
-  <meta property="title" content="9-D Sinf">
 
 
   <title>9-D Sinf - Group and Bots</title>
@@ -132,23 +115,74 @@
 		</div>
 	</nav>
 </section>
-
+<div class="xD">
 <section data-bs-version="5.1" class="header18 cid-uo4jGuijB7 mbr-fullscreen" style="background-image: url('images/screen/1.jpeg');" style="background-color: rgb(0, 0, 0);" data-bg-image="images/Logo/Maktab 4.png">
-  
-
   <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
   <div class="container-fluid">
     <div class="row">
       <div class="content-wrap col-12 col-md-12">      
-
         <h1 class="mbr-section-title mbr-fonts-style col-12 mbr-white mb-4 display-1" style="text-align:center;">
           <strong>Group and Bots</strong>
-        </h1>
-        
+        </h1>      
       </div>
     </div>
   </div>
+
+  <script>
+    // Kursor izini faqat ".neon-cursor-area" elementida ishlatish
+    const cursorArea = document.querySelector('.xD');
+    const colors = ['rgba(255, 192, 145)'];
+
+    cursorArea.addEventListener('mousemove', function (e) {
+      // Neon izi yaratish uchun div yaratamiz
+      const trail = document.createElement('div');
+      trail.classList.add('cursor-trail');
+      cursorArea.appendChild(trail);
+
+      // Kursorning pozitsiyasi faqat ".neon-cursor-area" ichida hisoblanadi
+      const rect = cursorArea.getBoundingClientRect();
+      trail.style.left = `${e.clientX - rect.left}px`;
+      trail.style.top = `${e.clientY - rect.top}px`;
+
+      // Har bir izi uchun tasodifiy rang tanlaymiz
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      trail.style.backgroundColor = randomColor;
+
+      // Neon izi 900ms dan keyin yo'qoladi
+      setTimeout(() => {
+        trail.remove();
+      }, 900);
+    });
+  </script>
+
+  <style>
+    .cursor-trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgb(255, 192, 145), 0 0 20px rgb(255, 192, 145) 0 30px rgb(255, 192, 145);
+      animation: fadeOut 0.9s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+      }
+    }
+
+    .neon-cursor-area {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
 </section>
+</div>
+
+
 
 <section data-bs-version="5.1" class="people04 cid-uo4jGukErE" id="testimonials-4-uo4jGukErE"></section>
 
@@ -206,14 +240,15 @@
 .social-icon {
   width: 160px; /* Tasvirning kengligini o'zgartiring */
   height: 160px; /* Tasvirning balandligini o'zgartiring */
-  background: #fff5e8;
+  /* background: #fff5e8; */
   border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 0 20px #000000;
+  /* box-shadow: 0 0 20px #000000; */
+  filter: drop-shadow(0 0 20px #000000);
   flex-wrap: nowrap;
   flex-direction: row;
 }
@@ -221,8 +256,9 @@
 .social-name {
   margin-top: 5px; /* Tasvirdan nomgacha bo'sh joy */
   font-size: 16px; /* Nomning o'lchamini o'zgartiring */
-  color: #000; /* Nomning rangini o'zgartiring */
+  color: #fff5e8; /* Nomning rangini o'zgartiring */
   font-weight: bold;
+  text-shadow: 1px 1px 2px #000000, 0 0 25px #000000, 0 0 5px #000000;
 }
 
 
