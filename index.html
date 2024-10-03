@@ -560,89 +560,49 @@
 
   <section data-bs-version="5.1" class="form5 cid-uo4jGuldhP" id="contact-form-2-uo4jGuldhP">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 content-head">
-          <div class="mbr-section-head mb-5">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-              <strong>Hozir bog'laning!</strong>
-            </h3>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-          <form id="telegram-form" class="mbr-form form-with-styler" data-form-title="Form Name">
-            <div class="row">
-              <div id="success-message" hidden="hidden" class="alert alert-success col-12">Shaklni to'ldirganingiz uchun
-                tashakkur!</div>
-              <div id="error-message" hidden="hidden" class="alert alert-danger col-12">Voy...! qandaydir muammo!</div>
+        <div class="row justify-content-center">
+            <div class="col-12 content-head">
+                <div class="mbr-section-head mb-5">
+                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                        <strong>Hozir bog'laning!</strong>
+                    </h3>
+                </div>
             </div>
-            <div class="dragArea row">
-              <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                <input type="text" name="name" placeholder="Ismingiz" data-form-field="name" class="form-control"
-                  id="name-contact-form-2-uo4jGuldhP" required>
-              </div>
-              <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                <input type="email" name="email" placeholder="Emailingiz" data-form-field="email" class="form-control"
-                  id="email-contact-form-2-uo4jGuldhP" required>
-              </div>
-              <div class="col-12 form-group mb-3" data-for="textarea">
-                <textarea name="textarea" placeholder="Xabar" data-form-field="textarea" class="form-control"
-                  id="textarea-contact-form-2-uo4jGuldhP" required></textarea>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                <button type="submit" class="btn btn-primary display-7">Yuborish!</button>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form id="telegram-form" class="mbr-form form-with-styler" data-form-title="Form Name">
+                    <div class="row">
+                        <div id="success-message" hidden="hidden" class="alert alert-success col-12">Shaklni to'ldirganingiz uchun
+                            tashakkur!</div>
+                        <div id="error-message" hidden="hidden" class="alert alert-danger col-12">Voy...! qandaydir muammo!</div>
+                    </div>
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            <input type="text" name="name" placeholder="Ismingiz" data-form-field="name" class="form-control"
+                                id="name-contact-form-2-uo4jGuldhP" required>
+                        </div>
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="telegram_username">
+                            <input type="text" name="telegram_username" placeholder="Telegram username (@user)"
+                                data-form-field="telegram_username" class="form-control"
+                                id="telegram-username-contact-form-2-uo4jGuldhP" 
+                                pattern="^@([A-Za-z0-9_]+)$" required title="Username @ belgisidan boshlanishi kerak va faqat raqamlar, harflar va pastki chiziqdan iborat bo'lishi mumkin">
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="textarea">
+                            <textarea name="textarea" placeholder="Xabar" data-form-field="textarea" class="form-control"
+                                id="textarea-contact-form-2-uo4jGuldhP" required></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                            <button type="submit" class="btn btn-primary display-7">Yuborish!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <script>
-    document.getElementById('telegram-form').addEventListener('submit', function (event) {
-      event.preventDefault(); // Formani qayta yuklashning oldini oladi
 
-      // Form ma'lumotlarini olish
-      var name = document.getElementById('name-contact-form-2-uo4jGuldhP').value;
-      var email = document.getElementById('email-contact-form-2-uo4jGuldhP').value;
-      var message = document.getElementById('textarea-contact-form-2-uo4jGuldhP').value;
-
-      // Yuboriladigan xabar formatini yaratish
-      var text = "Ismi: " + name + "\nEmail: " + email + "\nXabar: " + message;
-
-      // Telegram bot tokeni va chat ID
-      var token = "6518654563:AAHm3M2ekcpsHhB57fgb1tWvqWZN5VOPCgo";
-      var chat_id = "6852507131";
-      var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(text)}`;
-
-      // Xabarni yuborish
-      fetch(url)
-        .then(response => {
-          if (response.ok) {
-            document.getElementById('success-message').removeAttribute('hidden');
-          } else {
-            throw new Error('Xatolik yuz berdi!');
-          }
-        })
-        .catch(error => {
-          document.getElementById('error-message').removeAttribute('hidden');
-          console.error('Xatolik:', error);
-        });
-    });
-
-    document.getElementById('myLink').addEventListener('click', function (event) {
-      event.preventDefault(); // Havolani ochishni to'xtatish
-      document.getElementById('errorMessage').style.display = 'block'; // Xabarni ko'rsatish
-
-      // 1 soniyadan so'ng xabarni yo'qotish
-      setTimeout(function () {
-        document.getElementById('errorMessage').style.display = 'none'; // Xabarni yashirish
-      }, 1090); // 1000 millisekund = 1 soniya
-    });
-
-  </script>
 
 
 
@@ -729,6 +689,7 @@
   <script src="js/scroll-gallery.js"></script>
   <script src="js/script.js"></script>
   <script src="js/formoid.min.js"></script>
+  <script src="js/index2.js"></script>
 
 
 
