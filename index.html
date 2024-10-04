@@ -93,7 +93,7 @@
     }
 
     /* Xabarni ekranda markazga joylashtirish uchun stil */
-    #errorMessage {
+    #errorMessage1 {
       display: none;
       position: fixed;
       top: 50%;
@@ -106,6 +106,20 @@
       z-index: 1000;
     }
 
+    #errorMessage2 {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: rgba(255, 0, 0, 0.8);
+      color: white;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+
     .shadow-color {
       filter: drop-shadow(0 0 20px #000000);
       transition: filter 0.5s ease-in;
@@ -117,7 +131,8 @@
     .shadow-color:hover {
       filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
     }
-        /* Har bir menyu elementi uchun */
+
+    /* Har bir menyu elementi uchun */
     /* Barcha menyu elementlarining bir xil fon rangi */
     .menu-item {
       display: inline-block;
@@ -281,15 +296,20 @@
         <!-- First Image -->
         <div class="item features-image col-12 col-md-6 col-lg-3 shadow-color">
           <div class="item-wrapper">
-            <a href="https://t.me/demon_arut" target="_blank">
+            <a href="https://t.me/shokhruz_021" target="_blank">
               <div class="item-img mb-3">
-                <img src="images/Ustoz yordamchisi/Munisa.png" alt="IveNeS Website Builder" title="Sinf sardor">
+                <img src="images/Ustoz yordamchisi/shoxruz.jpg" alt="IveNeS Website Builder" title="Sinf sardor">
               </div>
               <div class="item-content align-left ">
                 <h5 class="item-title mbr-fonts-style display-5">
                   <strong>Sinf sardor</strong>
                 </h5>
-                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">Munisa</h6>
+                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">
+                  Shoxruz
+                  <video class="premium-video1" width="24" height="24" autoplay loop muted style="transform: translateY(15%);">                 
+                    <source src="images/premium/premium4.webm" type="video/webm">
+                  </video>
+                </h6>
               </div>
             </a>
           </div>
@@ -298,37 +318,40 @@
         <!-- Second Image -->
         <div class="item features-image col-12 col-md-6 col-lg-3 shadow-color">
           <div class="item-wrapper">
-            <a href="https://t.me/shokhruz_021" target="_blank">
+            <a href="https://t.me/shokhruz_021" id="myLink1" target="_blank">
               <div class="item-img mb-3">
-                <img src="images/Ustoz yordamchisi/shoxruz.jpg" alt="IveNeS Website Builder" title="Sardor yordamchisi">
+                <img src="images/Ustoz yordamchisi/Fotima.jpg" alt="IveNeS Website Builder" title="Sardor yordamchisi">
               </div>
               <div class="item-content align-left">
                 <h5 class="item-title mbr-fonts-style display-5">
                   <strong>Sardor yordamchisi</strong>
                 </h5>
-                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">Shoxruz</h6>
+                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">Fotima</h6>
               </div>
             </a>
+            <div id="errorMessage1">Bunday havola mavjud emas</div>
           </div>
         </div>
 
         <!-- Third Image -->
         <div class="item features-image col-12 col-md-6 col-lg-3 shadow-color">
           <div class="item-wrapper">
-            <a href="https://t.me/demon_arut" id="myLink" target="_blank">
+            <a href="https://t.me/shokhruz_021" id="myLink2" target="_blank">
               <div class="item-img mb-3">
-                <img src="images/Ustoz yordamchisi/Odina.jpg" alt="IveNeS Website Builder" title="Hamshira yordamchisi">
+                <img src="images/Ustoz yordamchisi/Gulbahor.jpg" alt="IveNeS Website Builder"
+                  title="Hamshira yordamchisi">
               </div>
               <div class="item-content align-left">
                 <h5 class="item-title mbr-fonts-style display-5">
                   <strong>Hamshira yordamchisi</strong>
                 </h5>
-                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">Odina</h6>
+                <h6 class="item-subtitle mbr-fonts-style mb-3 display-7 shadow-color">Gulbahor</h6>
               </div>
             </a>
-            <div id="errorMessage">Bunday havola mavjud emas</div>
+            <div id="errorMessage2">Bunday havola mavjud emas</div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -338,7 +361,7 @@
 
 
 
-    <div class="container-fluid" >
+    <div class="container-fluid">
 
       <div class="loop-container">
         <div class="item display-1" data-linewords="Bu sayt IveNeS tomonidan hech qanday pul sarflanmasdan yaratildi."
@@ -450,7 +473,7 @@
       </div>
     </div>
   </section>
-  
+
 
   <section data-bs-version="5.1" class="people04 cid-uo4jGukErE" id="testimonials-4-uo4jGukErE">
 
@@ -560,47 +583,47 @@
 
   <section data-bs-version="5.1" class="form5 cid-uo4jGuldhP" id="contact-form-2-uo4jGuldhP">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Hozir bog'laning!</strong>
-                    </h3>
-                </div>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-12 content-head">
+          <div class="mbr-section-head mb-5">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+              <strong>Hozir bog'laning!</strong>
+            </h3>
+          </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form id="telegram-form" class="mbr-form form-with-styler" data-form-title="Form Name">
-                    <div class="row">
-                        <div id="success-message" hidden="hidden" class="alert alert-success col-12">Shaklni to'ldirganingiz uchun
-                            tashakkur!</div>
-                        <div id="error-message" hidden="hidden" class="alert alert-danger col-12">Voy...! qandaydir muammo!</div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Ismingiz" data-form-field="name" class="form-control"
-                                id="name-contact-form-2-uo4jGuldhP" required>
-                        </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="telegram_username">
-                            <input type="text" name="telegram_username" placeholder="Telegram username (@user)"
-                                data-form-field="telegram_username" class="form-control"
-                                id="telegram-username-contact-form-2-uo4jGuldhP" 
-                                pattern="^@([A-Za-z0-9_]+)$" required title="Username @ belgisidan boshlanishi kerak va faqat raqamlar, harflar va pastki chiziqdan iborat bo'lishi mumkin">
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="textarea" placeholder="Xabar" data-form-field="textarea" class="form-control"
-                                id="textarea-contact-form-2-uo4jGuldhP" required></textarea>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                            <button type="submit" class="btn btn-primary display-7">Yuborish!</button>
-                        </div>
-                    </div>
-                </form>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+          <form id="telegram-form" class="mbr-form form-with-styler" data-form-title="Form Name">
+            <div class="row">
+              <div id="success-message" hidden="hidden" class="alert alert-success col-12">Shaklni to'ldirganingiz uchun
+                tashakkur!</div>
+              <div id="error-message" hidden="hidden" class="alert alert-danger col-12">Voy...! qandaydir muammo!</div>
             </div>
+            <div class="dragArea row">
+              <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                <input type="text" name="name" placeholder="Ismingiz" data-form-field="name" class="form-control"
+                  id="name-contact-form-2-uo4jGuldhP" required>
+              </div>
+              <div class="col-md col-sm-12 form-group mb-3" data-for="telegram_username">
+                <input type="text" name="telegram_username" placeholder="Telegram username (@user)"
+                  data-form-field="telegram_username" class="form-control"
+                  id="telegram-username-contact-form-2-uo4jGuldhP" pattern="^@([A-Za-z0-9_]+)$" required
+                  title="Username @ belgisidan boshlanishi kerak va faqat raqamlar, harflar va pastki chiziqdan iborat bo'lishi mumkin">
+              </div>
+              <div class="col-12 form-group mb-3" data-for="textarea">
+                <textarea name="textarea" placeholder="Xabar" data-form-field="textarea" class="form-control"
+                  id="textarea-contact-form-2-uo4jGuldhP" required></textarea>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                <button type="submit" class="btn btn-primary display-7">Yuborish!</button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
 
