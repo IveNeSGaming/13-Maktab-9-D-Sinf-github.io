@@ -113,14 +113,24 @@ document.getElementById('telegram-form').addEventListener('submit', function (ev
 
 
 ///havola hatoligi
-document.getElementById('myLink').addEventListener('click', function (event) {
+document.getElementById('myLink1').addEventListener('click', function (event) {
     event.preventDefault(); // Havolani ochishni to'xtatish
-    document.getElementById('errorMessage').style.display = 'block'; // Xabarni ko'rsatish
+    document.getElementById('errorMessage1').style.display = 'block'; // Xabarni ko'rsatish
 
     // 1 soniyadan so'ng xabarni yo'qotish
     setTimeout(function () {
-      document.getElementById('errorMessage').style.display = 'none'; // Xabarni yashirish
+        document.getElementById('errorMessage1').style.display = 'none'; // Xabarni yashirish
     }, 1090); // 1000 millisekund = 1 soniya
-  });
+});
+
+document.getElementById('myLink2').addEventListener('click', function (event) {
+    event.preventDefault(); // Havolani ochishni to'xtatish
+    document.getElementById('errorMessage2').style.display = 'block'; // Xabarni ko'rsatish
+
+    // 1 soniyadan so'ng xabarni yo'qotish
+    setTimeout(function () {
+        document.getElementById('errorMessage2').style.display = 'none'; // Xabarni yashirish
+    }, 1090); // 1000 millisekund = 1 soniya
+});
 
 
