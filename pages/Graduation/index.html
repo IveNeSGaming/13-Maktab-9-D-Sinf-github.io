@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/style_1.css">
+  <link rel="stylesheet" href="css/Graduation.css">
   <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&amp;display=swap&amp;display=swap" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
@@ -96,7 +97,8 @@
               <img src="images/Logo/Maktab 4.png" alt="IveNeS Website Builder" style="height: 5.3rem;">
             </a>
           </span>
-          <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="../../">9-D Sinf</a></span>
+          <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="../../">9-D
+              Sinf</a></span>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
           data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
@@ -127,10 +129,18 @@
               <a class="nav-link link text-black display-4" href="../../pages/Graduation/"><ins>Graduation</ins></a>
             </li>
           </ul>
+          <ul>
+            <!-- Blur effectli soat qutisi -->
+            <div class="clock-box2">
+              <div id="clock" class="time-text2">1:34 PM</div>
+              <div id="date" class="date-text2">5.10.2024</div>
+            </div>
+          </ul>
 
           <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="https://t.me/IveNeS_UZ"
               target="_blank">Telegram</a></div>
         </div>
+
       </div>
     </nav>
   </section>
@@ -145,7 +155,7 @@
         <div class="row">
           <div class="content-wrap col-12 col-md-12">
             <h1 class="mbr-section-title mbr-fonts-style col-12 mbr-white mb-4 display-1" style="text-align:center;">
-              <strong>Graduation</strong>
+              <strong>Maktab tugash sanasi.</strong>
             </h1>
           </div>
         </div>
@@ -209,109 +219,24 @@
 
   <section data-bs-version="5.1" class="people04 cid-uo4jGukErE" id="testimonials-4-uo4jGukErE"></section>
 
-  <!DOCTYPE html>
-  <html lang="uz">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaqt hisoblash</title>
-    <style>
-      .container1 {
-        cursor: default;
-        /* Harsavargiday oddiy sichqoncha ko'rsatkichi */
-        background-color: #2ec4b6;
-        /* Fon rangi */
-        color: #ffffff;
-        /* Matn rangi */
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 20px;
-        border-radius: 10px;
-        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.568));
-        margin: 20px auto;
-        /* Avtomatik margin */
-        width: 90%;
-        display: flex;
-        justify-content: center;
-        /* Ichki elementlarni markazda joylashtirish */
-        flex-direction: column;
-        /* Qator bo'ylab joylashish */
-        align-items: center;
-        /* Markazda joylashtirish */
-      }
 
-      .Graduation {
-        filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.774));
-        font-weight: bold;
-        color: black;
-        font-size: 2em;
-        margin: 20px 20;
-        cursor: default;
-        /* Harsavargiday oddiy sichqoncha ko'rsatkichi */
-      }
+  <!-- Qancha kun qoldi qismi -->
+  <h1 class="Graduation" style="text-align:center;">2025-yil 25-maygacha qancha kun qoldi</h1>
 
-      .time {
-        font-size: 1.5em;
-        margin: 10px 0;
-        /* Bo'limlar orasiga bo'sh joy qo'shadi */
-        transition: font-size 0.3s, transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        /* O'zgarish tezligini belgilaydi */
-        will-change: transform;
-        /* Animatsiya uchun optimallashtirish */
-      }
+  <div class="container1">
+    <div id="days" class="time"></div>
+  </div>
 
-      .time:hover {
-        font-size: 2em;
-        /* Sichqoncha ustida bo'lganda kattalashadi */
-        transform: scale(1.1);
-        /* Biroz kattalashtirish */
-      }
-    </style>
-  </head>
+  <div class="container1">
+    <div id="weeks" class="time"></div>
+  </div>
 
-  <body>
+  <div class="container1">
+    <div id="hours" class="time"></div>
+  </div>
 
-    <h1 class="Graduation" style="text-align:center;">2025-yil 25-maygacha qancha kun qoldi</h1>
-
-    <div class="container1">
-      <div id="days" class="time"></div>
-    </div>
-
-    <div class="container1">
-      <div id="weeks" class="time"></div>
-    </div>
-
-    <div class="container1">
-      <div id="hours" class="time"></div>
-    </div>
-
-    <script>
-      function updateCountdown() {
-        const now = new Date();
-        const targetDate = new Date('2025-05-25T00:00:00+05:00'); // Jizzax vaqti (GMT+5)
-
-        const difference = targetDate - now; // Millisekundlarda
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const weeks = (days / 7).toFixed(1);
-        const hours = (difference / (1000 * 60 * 60)).toFixed(4);
-
-        document.getElementById('days').innerText = `${days} kun ${new Date(difference).getUTCHours()} soat ${new Date(difference).getUTCMinutes()} daqiqa ${new Date(difference).getUTCSeconds()} soniya`;
-        document.getElementById('weeks').innerText = `${weeks} hafta`;
-        document.getElementById('hours').innerText = `${hours} soat`;
-      }
-
-      // Dastlabki yangilash
-      updateCountdown();
-
-      // Har bir soniyada yangilab turish
-      setInterval(updateCountdown, 1000);
-    </script>
-  </body>
-
-  </html>
-
+  <script src="js/Graduation.js"></script>
 
 
 
