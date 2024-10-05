@@ -1,0 +1,92 @@
+      /* Umumiy uslub */
+
+      .container1 {
+          cursor: default;
+          background-color: #2ec4b6;
+          color: #ffffff;
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding: 20px;
+          border-radius: 10px;
+          filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.568));
+          margin: 20px auto;
+          width: 90%;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .Graduation {
+          filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.774));
+          font-weight: bold;
+          color: black;
+          font-size: 2em;
+          margin: 20px 20;
+          cursor: default;
+      }
+
+      .time {
+          font-size: 1.5em;
+          margin: 10px 0;
+          transition: font-size 0.3s, transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+          will-change: transform;
+      }
+
+      .time:hover {
+          font-size: 2em;
+          transform: scale(1.1);
+      }
+
+      @keyframes fadeIn {
+          0% {
+              transform: translateY(100%);
+              opacity: 0;
+          }
+
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
+
+
+
+      /* Blur effectli soat */
+      .clock-box2 {
+          /* background-color: rgb(46 196 182 / 43%); */
+          cursor: default;
+          transform: translateY(25%);
+          color: #6b6b6b;
+          font-weight: bold;
+          border-radius: 30px;
+          /* backdrop-filter: blur(100px); */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 16px !important;
+      }
+
+      .clock-box2 * {
+          filter: none;
+      }
+
+
+      .time-text2 {
+          transition: transform 0.5s ease;
+          animation: fadeIn 1s ease forwards;
+          font-family: 'Brush Script MT', cursive;
+      }
+
+      .date-text2 {
+          font-weight: bold;
+          font-family: 'Brush Script MT', cursive;
+
+          text-decoration: none;
+          /* Standart chiziqni olib tashlash */
+          border-bottom: 3px solid black;
+          /* Ostiga qalin chiziq qo'shish */
+          padding-bottom: 2px;
+          /* Chiziq va matn orasidagi masofa */
+
+      }
