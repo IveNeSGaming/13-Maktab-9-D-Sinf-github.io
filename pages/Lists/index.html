@@ -149,39 +149,54 @@
 
   <div class="xD">
     <section data-bs-version="5.1" class="header18 cid-uo4jGuijB7 mbr-fullscreen"
-      style="background-image: url('images/screen/1.jpeg');" style="background-color: rgb(0, 0, 0);"
+      style="background-image: url('images/screen/1.jpeg'); background-color: rgb(0, 0, 0);"
       data-bg-image="images/Logo/Maktab 4.png">
-
 
       <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
       <div class="container-fluid">
         <div class="row">
           <div class="content-wrap col-12 col-md-12">
             <h1 class="mbr-section-title mbr-fonts-style col-12 mbr-white mb-4 display-1" style="text-align:center;">
-              <strong>Ro'yxatlar</strong>
+              <strong class="no-select">Ro'yxatlar</strong>
             </h1>
-
-
           </div>
         </div>
       </div>
+
+      <style>
+        .no-select {
+          cursor: default;
+          user-select: none;
+          /* Matnni belgilashga ruxsat bermaydi */
+          -webkit-user-select: none;
+          /* Safari uchun */
+          -moz-user-select: none;
+          /* Firefox uchun */
+          pointer-events: auto;
+          /* Bosishni ruxsat beradi */
+          /* Fon rangini qo'shish */
+          padding: 10px;
+          /* Ichki bo'shliq */
+          border-radius: 5px;
+          /* Burchaklarni yumshatish */
+        }
+      </style>
+
       <script>
         // Kursor izini faqat ".neon-cursor-area" elementida ishlatish
         const cursorArea = document.querySelector('.xD');
         const colors = ['rgba(255, 192, 145)'];
 
-        cursorArea.addEventListener('mousemove', function (e) {
-          // Neon izi yaratish uchun div yaratamiz
+        const createTrail = (x, y) => {
           const trail = document.createElement('div');
           trail.classList.add('cursor-trail');
           cursorArea.appendChild(trail);
 
-          // Kursorning pozitsiyasi faqat ".neon-cursor-area" ichida hisoblanadi
+          // Kursorning pozitsiyasi
           const rect = cursorArea.getBoundingClientRect();
-          trail.style.left = `${e.clientX - rect.left}px`;
-          trail.style.top = `${e.clientY - rect.top}px`;
+          trail.style.left = `${x - rect.left}px`;
+          trail.style.top = `${y - rect.top}px`;
 
-          // Har bir izi uchun tasodifiy rang tanlaymiz
           const randomColor = colors[Math.floor(Math.random() * colors.length)];
           trail.style.backgroundColor = randomColor;
 
@@ -189,6 +204,17 @@
           setTimeout(() => {
             trail.remove();
           }, 900);
+        };
+
+        // Kompyuterda harakat
+        cursorArea.addEventListener('mousemove', function (e) {
+          createTrail(e.clientX, e.clientY);
+        });
+
+        // Mobil qurilmalarda tegish
+        cursorArea.addEventListener('touchmove', function (e) {
+          const touch = e.touches[0]; // Birinchi teginish nuqtasi
+          createTrail(touch.clientX, touch.clientY);
         });
       </script>
 
@@ -200,7 +226,7 @@
           border-radius: 50%;
           pointer-events: none;
           transform: translate(-50%, -50%);
-          box-shadow: 0 0 10px rgb(255, 192, 145), 0 0 20px rgb(255, 192, 145) 0 30px rgb(255, 192, 145);
+          box-shadow: 0 0 10px rgb(255, 192, 145), 0 0 20px rgb(255, 192, 145), 0 0 30px rgb(255, 192, 145);
           animation: fadeOut 0.9s forwards;
         }
 
@@ -217,7 +243,6 @@
         }
       </style>
     </section>
-
   </div>
 
 
@@ -235,9 +260,9 @@
   <body>
     <section data-bs-version="5.1" class="form5 cid-uo4jGuldhP" id="contact-form-2-uo4jGuldhP">
       <div class="containerList">
-        <div class="jadval scalable" onclick="openModal(1)">O'quvchilar ro'yxati</div>
-        <div class="jadval scalable" onclick="openModal(2)">Dars jadvali</div>
-        <div class="jadval scalable" onclick="openModal(3)">Sinf novbatchilar ro'yxati</div>
+        <div class="no-select jadval scalable" onclick="openModal(1)">O'quvchilar ro'yxati</div>
+        <div class="no-select jadval scalable" onclick="openModal(2)">Dars jadvali</div>
+        <div class="no-select jadval scalable" onclick="openModal(3)">Sinf novbatchilar ro'yxati</div>
 
       </div>
 
