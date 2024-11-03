@@ -1,0 +1,50 @@
+.slideshow {
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+    /* position: absolute; */
+    top: 110px;
+    left: 20px;
+    padding: 20px;
+    background-color: rgb(46 196 182 / 43%);
+    color: white;
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    border-radius: 30px;
+    /* backdrop-filter: blur(10px); */
+    /* Faqat fonni blur qiladi */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: center;
+    margin: 20px auto;
+    width: 390px;
+}
+
+
+.student-info {
+    font-size: 18px;
+    color: #333;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.student-info.show {
+    opacity: 1;
+}
+
+.no-select1 {
+    cursor: default;
+    user-select: none;
+    /* Matnni belgilashga ruxsat bermaydi */
+    -webkit-user-select: none;
+    /* Safari uchun */
+    -moz-user-select: none;
+    /* Firefox uchun */
+    pointer-events: auto;
+}
+
+.highlight {
+    font-weight: bold; /* Matnni qalin qiladi */
+    color: #333; /* Rangni sozlashingiz mumkin */
+}
