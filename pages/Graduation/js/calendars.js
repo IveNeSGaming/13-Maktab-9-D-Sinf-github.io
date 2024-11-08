@@ -93,7 +93,7 @@ function displayStudent() {
         return; // Agar student bo'lmasa, funksiyadan chiqamiz
     }
 
-    const message = student.message || `Qolgan kunlar: ${student.daysLeft} kun, Yoshiga kiradi: ${student.age} yosh`;
+    const message = student.message || `Qolgan kunlar: ${student.daysLeft} kun, ${student.age} Yoshiga kiradi.`;
 
     studentInfoDiv.innerHTML = `
         <span class="highlight">${student.ism} ${student.familya}</span> <br>
