@@ -25,7 +25,7 @@ const jadval1Oquvchilar = [
     { raqam: 23, ism: 'Diana', familya: 'Urdusheva', tugulgan_kun: '26.07.2009' },
     { raqam: 24, ism: 'Asilbek', familya: 'Xolmo\'minov', tugulgan_kun: '02.11.2009' },
     { raqam: 25, ism: 'Alijon', familya: 'Xudoyberdiyev', tugulgan_kun: '22.04.2009' },
-    { raqam: 26, ism: 'Go\'zal', familya: 'Yo\'ldosheva', tugulgan_kun: '18.04.2009' },
+    { raqam: 26, ism: 'Go\'zal', familya: 'Yo\'ldosheva', tugulgan_kun: '18.04.2010' },
     { raqam: 27, ism: 'Izzat', familya: 'Zokirov', tugulgan_kun: '27.03.2009' },
     { raqam: 28, ism: 'Adizjon', familya: 'Sharipov ', tugulgan_kun: '02.07.2009' },
 ];
@@ -40,10 +40,11 @@ const jadval2Oquvchilar = [
 ];
 
 const jadval3Oquvchilar = [
-    { raqam: 1, Dushanba: 'Fotima', Seshanba: 'Sevinch', Chorshanba: 'Diana', Payshanba: 'Zulfiya', Juma: 'Munisa', Shanba: 'Odina' },
-    { raqam: 2, Dushanba: 'Go\'zal', Seshanba: 'Durdona', Chorshanba: 'Zuhra', Payshanba: 'Bibigul', Juma: 'Gulbahor', Shanba: 'Kumush' },
-    { raqam: 3, Dushanba: 'Alijon', Seshanba: 'Shoxruz', Chorshanba: 'Laziz', Payshanba: ' ', Juma: 'Ozodbek', Shanba: 'Sardor' },
-    { raqam: 4, Dushanba: 'Joxongir', Seshanba: 'Izzat', Chorshanba: 'Ulug\'gbek', Payshanba: ' ', Juma: 'Shohjahon', Shanba: 'Ruslan' }
+    { raqam: 1, Dushanba: 'Fotima', Seshanba: 'Sevinch', Chorshanba: 'Diana', Payshanba: 'Zulfiya', Juma: 'Odina', Shanba: 'Munisa' },
+    { raqam: 2, Dushanba: 'Go\'zal', Seshanba: 'Durdona', Chorshanba: 'Zuhra', Payshanba: 'Gulbahor', Juma: 'Kumush', Shanba: 'Sarvara' },
+    { raqam: 3, Dushanba: 'Alijon', Seshanba: 'Shoxruz', Chorshanba: 'Laziz', Payshanba: 'Shohjahon', Juma: 'Sardor', Shanba: 'Bibigul' },
+    { raqam: 4, Dushanba: 'Joxongir', Seshanba: 'Izzat', Chorshanba: 'Adiz', Payshanba: 'Suhrob', Juma: 'G\'olib', Shanba: 'Ozod' },
+    { raqam: 5, Dushanba: 'Islom',         Seshanba: '', Chorshanba: 'Ruslan', Payshanba: ' ', Juma: 'Asilbek', Shanba: 'Ulug\'bek' },
 ];
 const jadval4Oquvchilar = [];
 
