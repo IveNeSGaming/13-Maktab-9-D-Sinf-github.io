@@ -25,7 +25,7 @@ const students = [
     { raqam: 23, ism: 'Diana', familya: 'Urdusheva', tugulgan_kun: '26.07.2009' },
     { raqam: 24, ism: 'Asilbek', familya: 'Xolmo\'minov', tugulgan_kun: '02.11.2009' },
     { raqam: 25, ism: 'Alijon', familya: 'Xudoyberdiyev', tugulgan_kun: '22.04.2009' },
-    { raqam: 26, ism: 'Go\'zal', familya: 'Yo\'ldosheva', tugulgan_kun: '18.04.2009' },
+    { raqam: 26, ism: 'Go\'zal', familya: 'Yo\'ldosheva', tugulgan_kun: '18.04.2010' },
     { raqam: 27, ism: 'Izzat', familya: 'Zokirov', tugulgan_kun: '27.03.2009' },
     { raqam: 28, ism: 'Adizjon', familya: 'Sharipov ', tugulgan_kun: '02.07.2009' },
 ];
@@ -108,7 +108,7 @@ function displayStudent() {
         studentInfoDiv.classList.remove('show');
         currentIndex = (currentIndex + 1) % upcomingBirthdays.length;
         setTimeout(displayStudent, 1000); // Navbatdagi o'quvchi chiqishidan oldin kutish
-    }, 3000);
+    }, 4500);
 }
 
 // Boshlanishi
