@@ -35,7 +35,7 @@ const jadval2Oquvchilar = [
     { raqam: 2, Dushanba: 'Fizika', Seshanba: 'Algebra', Chorshanba: 'Ingliz tili', Payshanba: 'Biologiya', Juma: 'Kimyo', Shanba: 'Adabiyot' },
     { raqam: 3, Dushanba: 'Rus tili', Seshanba: 'Geometriya', Chorshanba: 'Adabiyot', Payshanba: 'Jahon tarixi', Juma: 'Jismoniy madaniyat', Shanba: 'Algebra' },
     { raqam: 4, Dushanba: 'Ona tili', Seshanba: 'Informatika', Chorshanba: 'Jismoniy madaniyat', Payshanba: 'Fizika', Juma: 'Informatika', Shanba: 'Kimyo' },
-    { raqam: 5, Dushanba: 'Biologiya', Seshanba: 'Chizmachilik', Chorshanba: 'Tarbiya', Payshanba: 'Ona tili', Juma: 'Geografiya', Shanba: 'Adabiyot' },
+    { raqam: 5, Dushanba: 'Biologiya', Seshanba: 'Chizmachilik', Chorshanba: 'Tarbiya', Payshanba: 'Adabiyot', Juma: 'Geografiya', Shanba: 'Ona tili' },
     { raqam: 6, Dushanba: 'Ingliz tili', Seshanba: '', Chorshanba: 'O\'zbekiston tarixi', Payshanba: 'Rus tili', Juma: 'Iqtisodiyot', Shanba: 'Geometriya' },
 ];
 
@@ -172,3 +172,5 @@ window.onclick = function (event) {
         modal.style.display = 'none';
     }
 }
+
+
