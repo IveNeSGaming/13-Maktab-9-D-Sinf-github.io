@@ -184,10 +184,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
             <li class="nav-item">
-              <a class="nav-link link text-black display-4" href="./"><ins>Home</ins></a>
+              <a class="nav-link link text-black display-4" href="./" id="tugma1"><ins>Home</ins></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link text-black display-4" href="pages/Group and Bots/" aria-expanded="false">Group and
+              <a class="nav-link link text-black display-4" href="pages/Group and Bots/" aria-expanded="false" id="tugma2" >Group and
                 Bots</a>
             </li>
             <li class="nav-item">
@@ -423,7 +423,7 @@
       </div>
       <div class="row">
         <div class="item features-image col-12 col-md-6 col-lg-3 active">
-          <div class="item-wrapper">
+          <div class="item-wrapper item-wrapperm">
             <div class="item-img mb-3">
               <img src="images/Sites/emaktab.uz.png" alt="IveNeS Website Builder" title="">
             </div>
@@ -443,7 +443,7 @@
           </div>
         </div>
         <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
+          <div class="item-wrapper item-wrapperm">
             <div class="item-img mb-3">
               <img src="images/Sites/Kitob.uz.jpeg" alt="IveNeS Website Builder" title="" data-slide-to="1"
                 data-bs-slide-to="1">
@@ -463,7 +463,7 @@
         </div>
 
         <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
+          <div class="item-wrapper item-wrapperm">
             <div class="item-img mb-3">
               <img src="images/Sites/maktab.uz.png" alt="IveNeS Website Builder" title="" data-slide-to="2"
                 data-bs-slide-to="2">
@@ -482,7 +482,7 @@
           </div>
         </div>
         <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
+          <div class="item-wrapper item-wrapperm">
             <div class="item-img mb-3">
               <img src="images/Sites/talim.uz.png" alt="IveNeS Website Builder" title="" data-slide-to="2"
                 data-bs-slide-to="2">
@@ -504,6 +504,38 @@
           </div>
         </div>
       </div>
+
+      <style>
+        /* Ensure the card items are displayed evenly */
+        .item-wrapperm {
+          filter: drop-shadow(0 0 20px #a8a8a8);
+          transition: filter 0.5s ease-in;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 1rem;
+          height: 100%;        
+          border-radius: 10px;
+        }
+
+
+
+
+
+        /* Ensure the content takes up the appropriate space */
+        .item-content {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        /* Make sure the button is positioned at the bottom */
+        .item-footer {
+          margin-top: auto;
+          /* This pushes the button to the bottom */
+        }
+      </style>
     </div>
   </section>
   <section data-bs-version="5.1" class="people04 cid-uo4jGukErE" id="testimonials-4-uo4jGukErE">
@@ -745,7 +777,6 @@
   <script src="js/mbr-switch-arrow.js"></script>
   <script src="js/scroll-gallery.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/formoid.min.js"></script>
   <script src="js/index2.js"></script>
 
 
