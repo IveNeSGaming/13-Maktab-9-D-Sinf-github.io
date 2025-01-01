@@ -20,7 +20,7 @@
   <meta property="og:image" content="images/Logo/images/Logo/logo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  
+
 
   <!-- URL of the page -->
   <meta property="og:url" content="https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/">
@@ -28,6 +28,8 @@
 
   <!-- Set the type to webpage -->
   <meta property="og:type" content="website">
+
+
 
   <meta itemprop="thumbnailUrl" content="images/Logo/Maktab 4.png">
 
@@ -563,7 +565,8 @@
               margin-right: 20px;
           ">
             <div class="card-box align-left">
-              <p class="card-text mbr-fonts-style display-7" style="text-align: center;">Salom, men sayt yaratuvchisi va admini IveNeS man. Hozirda
+              <p class="card-text mbr-fonts-style display-7" style="text-align: center;">Salom, men sayt yaratuvchisi va
+                admini IveNeS man. Hozirda
                 maktab yoshidaman va bu saytni o'zim o'qiyotgan sinf uchun yaratdim.</p>
               <div class="img-wrapper mt-4 mb-3">
                 <a href="https://t.me/IveNeS_UZ" target="_blank"><img src="images/Sayt_admini.png" data-slide-to="5"
@@ -622,22 +625,96 @@
           </div>
         </div>
       </div>
-      <div class="grid-container">
-        <div class="grid-container-3 moving-left" style="transform: translate3d(-200px, 0px, 0px);">
-          <div class="grid-item">
-            <img src="images/Logo/Maktab 4.png" alt="IveNeS Website Builder">
-          </div>
-          <div class="grid-item">
-            <img src="images/img/photo_2024-04-23_22-24-21 (2).jpg" alt="IveNeS Website Builder">
-          </div>
-          <div class="grid-item">
-            <img src="images/img/photo_2024-04-23_22-24-21.jpg" alt="IveNeS Website Builder">
-          </div>
-          <div class="grid-item">
-            <img src="images/img/photo_2024-04-23_22-24-03.jpg" alt="IveNeS Website Builder">
+
+
+        <style>
+          /* Main body styling */
+          .Image-body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          /* Carousel container */
+          .carousel {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 900px;
+            /* Default width for desktop */
+            height: 600px;
+            /* Default height for desktop */
+            overflow: hidden;
+          }
+
+          /* Carousel images */
+          .carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0, 0, 0.83, 1.87);
+            pointer-events: none;
+            /* Prevent interaction with the image */
+            user-select: none;
+            /* Disable image selection */
+          }
+
+          .carousel img.active {
+            opacity: 1;
+            z-index: 1;
+          }
+
+          .carousel img.inactive {
+            z-index: 0;
+          }
+
+          /* Responsive design for mobile devices */
+          @media (max-width: 767px) {
+            .carousel {
+              width: calc(100% - 40px);
+              height: calc((400px - 40px)* 0.625);
+              margin: 20px;
+            }
+          }
+        </style>
+        <div class="Image-body">
+          <div class="carousel">
+            <img src="images/img/1.jpg" alt="Image 1" class="active">
+            <img src="images/img/2.jpg" alt="Image 2">
+            <img src="images/img/3.jpg" alt="Image 3">
+            <img src="images/img/4.jpg" alt="Image 4">
+            <img src="images/img/5.jpg" alt="Image 5">
           </div>
         </div>
-      </div>
+
+        <script>
+          const images = document.querySelectorAll('.carousel img');
+          let currentIndex = 0;
+
+          function showNextImage() {
+            const currentImage = images[currentIndex];
+            currentImage.classList.remove('active');
+            currentImage.classList.add('inactive');
+
+            currentIndex = (currentIndex + 1) % images.length;
+
+            const nextImage = images[currentIndex];
+            nextImage.classList.add('active');
+            nextImage.classList.remove('inactive');
+          }
+
+          // Automatically change the image every 4 seconds
+          setInterval(showNextImage, 4000);
+        </script>
+
+
     </div>
   </section>
 
