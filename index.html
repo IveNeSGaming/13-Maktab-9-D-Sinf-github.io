@@ -922,24 +922,6 @@
   <script src="js/scroll-gallery.js"></script>
   <script src="js/script.js"></script>
   <script src="js/index2.js"></script>
-  <script>
-    document.getElementById('file-upload').addEventListener('change', function (event) {
-      const file = event.target.files[0];
-      const maxSize = 30 * 1024 * 1024; // 10 MB
-
-      if (file.size > maxSize) {
-        const errorMessage = document.getElementById('file-error-message');
-        errorMessage.style.display = 'block';
-        setTimeout(() => {
-          errorMessage.style.display = 'none';
-        }, 3000);
-        event.target.value = ''; // Clear the file input
-      }
-    });
-  </script>
-
-
-
 
 </body>
 
