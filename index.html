@@ -61,6 +61,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap&display=swap">
   </noscript>
   <link rel="stylesheet" href="css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 
@@ -152,6 +153,20 @@
       /* Ostiga qalin chiziq qo'shish */
       padding-bottom: 2px;
       /* Chiziq va matn orasidagi masofa */
+    }
+
+    .progress-bar {
+      display: none;
+      width: 0;
+      height: 5px;
+      background-color: #20c997;
+      transition: width 0.3s;
+    }
+
+    .file-error-message {
+      display: none;
+      color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -627,92 +642,92 @@
       </div>
 
 
-        <style>
-          /* Main body styling */
-          .Image-body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
+      <style>
+        /* Main body styling */
+        .Image-body {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-          /* Carousel container */
+        /* Carousel container */
+        .carousel {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 900px;
+          /* Default width for desktop */
+          height: 600px;
+          /* Default height for desktop */
+          overflow: hidden;
+        }
+
+        /* Carousel images */
+        .carousel img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+          transition: opacity 1.5s cubic-bezier(0, 0, 0.83, 1.87);
+          pointer-events: none;
+          /* Prevent interaction with the image */
+          user-select: none;
+          /* Disable image selection */
+        }
+
+        .carousel img.active {
+          opacity: 1;
+          z-index: 1;
+        }
+
+        .carousel img.inactive {
+          z-index: 0;
+        }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 767px) {
           .carousel {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 900px;
-            /* Default width for desktop */
-            height: 600px;
-            /* Default height for desktop */
-            overflow: hidden;
+            width: calc(100% - 40px);
+            height: calc((400px - 40px)* 0.625);
+            margin: 20px;
           }
-
-          /* Carousel images */
-          .carousel img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.5s cubic-bezier(0, 0, 0.83, 1.87);
-            pointer-events: none;
-            /* Prevent interaction with the image */
-            user-select: none;
-            /* Disable image selection */
-          }
-
-          .carousel img.active {
-            opacity: 1;
-            z-index: 1;
-          }
-
-          .carousel img.inactive {
-            z-index: 0;
-          }
-
-          /* Responsive design for mobile devices */
-          @media (max-width: 767px) {
-            .carousel {
-              width: calc(100% - 40px);
-              height: calc((400px - 40px)* 0.625);
-              margin: 20px;
-            }
-          }
-        </style>
-        <div class="Image-body">
-          <div class="carousel">
-            <img src="images/img/1.jpg" alt="Image 1" class="active">
-            <img src="images/img/2.jpg" alt="Image 2">
-            <img src="images/img/3.jpg" alt="Image 3">
-            <img src="images/img/4.jpg" alt="Image 4">
-            <img src="images/img/5.jpg" alt="Image 5">
-          </div>
+        }
+      </style>
+      <div class="Image-body">
+        <div class="carousel">
+          <img src="images/img/1.jpg" alt="Image 1" class="active">
+          <img src="images/img/2.jpg" alt="Image 2">
+          <img src="images/img/3.jpg" alt="Image 3">
+          <img src="images/img/4.jpg" alt="Image 4">
+          <img src="images/img/5.jpg" alt="Image 5">
         </div>
+      </div>
 
-        <script>
-          const images = document.querySelectorAll('.carousel img');
-          let currentIndex = 0;
+      <script>
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
 
-          function showNextImage() {
-            const currentImage = images[currentIndex];
-            currentImage.classList.remove('active');
-            currentImage.classList.add('inactive');
+        function showNextImage() {
+          const currentImage = images[currentIndex];
+          currentImage.classList.remove('active');
+          currentImage.classList.add('inactive');
 
-            currentIndex = (currentIndex + 1) % images.length;
+          currentIndex = (currentIndex + 1) % images.length;
 
-            const nextImage = images[currentIndex];
-            nextImage.classList.add('active');
-            nextImage.classList.remove('inactive');
-          }
+          const nextImage = images[currentIndex];
+          nextImage.classList.add('active');
+          nextImage.classList.remove('inactive');
+        }
 
-          // Automatically change the image every 4 seconds
-          setInterval(showNextImage, 4000);
-        </script>
+        // Automatically change the image every 4 seconds
+        setInterval(showNextImage, 4000);
+      </script>
 
 
     </div>
@@ -757,10 +772,57 @@
                   id="telegram-username-contact-form-2-uo4jGuldhP" pattern="^@([A-Za-z0-9_]+)$" required
                   title="Username @ belgisidan boshlanishi kerak va faqat raqamlar, harflar va pastki chiziqdan iborat bo'lishi mumkin">
               </div>
-              <div class="col-12 form-group mb-3" data-for="textarea">
+              <div class="col-12 form-group mb-3" data-for="textarea" style="position: relative;">
                 <textarea name="textarea" placeholder="Xabar" data-form-field="textarea" class="form-control"
-                  id="textarea-contact-form-2-uo4jGuldhP" required></textarea>
+                  id="textarea-contact-form-2-uo4jGuldhP" required style="padding-right: 50px;"></textarea>
+
+                <!-- Fayl yuklash iconi -->
+                <label for="file-upload" class="file-upload-label">
+                  <i class="fas fa-upload"></i>
+                </label>
+
+                <!-- Fayl yuklash inputi -->
+                <input type="file" id="file-upload" name="file" accept="image/*,video/*,.pdf,.doc,.docx,.xls,.xlsx"
+                  style="display: none;">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="file-error-message" id="file-error-message">Fayl juda katta, iltimos kichikroq fayl yuklang.</div>
               </div>
+
+              <style>
+                /* Fayl yuklash tugmachasi aylana shaklida */
+                .file-upload-label {
+                  position: absolute;
+                  right: 30px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  width: 35px;
+                  height: 35px;
+                  background: #ddd;
+                  /* Oddiy holatda */
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  cursor: pointer;
+                  transition: background 0.3s ease, transform 0.3s ease;
+                }
+
+                /* Icon o'lchami */
+                .file-upload-label i {
+                  font-size: 16px;
+                  color: #555;
+                  /* Ikon rangi o'zgarmaydi */
+                  transition: color 0.3s ease;
+                }
+
+                /* Sichqoncha borganda faqat radius rangi o'zgaradi */
+                .file-upload-label:hover {
+                  background: #20c997;
+                  /* Yashil (#198754) rangga o'zgaradi */
+                  transform: translateY(-50%) scale(1.1);
+                }
+              </style>
+
               <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
                 <button type="submit" class="btn btn-primary display-7">Yuborish!</button>
               </div>
@@ -798,8 +860,7 @@
               <a href="pages/Books/" class="text-white">Books</a>
             </li>
             <li class="header-menu-item mbr-fonts-style display-5">
-              <a href="pages/Lists/" class="text-white">Lists</a>
-            </li>
+              <a href="pages/Lists/" class="text-white">Lists</li>
             <li class="header-menu-item mbr-fonts-style display-5">
               <a href="pages/Graduation/" class="text-white">Graduation</a>
             </li>
@@ -808,7 +869,7 @@
 
 
         <div class="col-12 mt-4">
-          <p class="mbr-fonts-style copyright display-7">© 2025 Barcha huquqlar himoyalangan.</p>
+          <p class="mbr-fonts-style copyright display-7">© 2024 Barcha huquqlar himoyalangan.</p>
         </div>
 
 
@@ -861,6 +922,21 @@
   <script src="js/scroll-gallery.js"></script>
   <script src="js/script.js"></script>
   <script src="js/index2.js"></script>
+  <script>
+    document.getElementById('file-upload').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const maxSize = 30 * 1024 * 1024; // 10 MB
+
+      if (file.size > maxSize) {
+        const errorMessage = document.getElementById('file-error-message');
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 3000);
+        event.target.value = ''; // Clear the file input
+      }
+    });
+  </script>
 
 
 
