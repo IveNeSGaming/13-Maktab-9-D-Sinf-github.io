@@ -1,6 +1,6 @@
 # 13-Maktab 9-D Sinf Web Sayti
 
-[13-Maktab 9-D Sinf](https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/) – bu 13-maktabning 9-D sinfi uchun maxsus yaratilgan web sayt bo‘lib, unda turli xil foydali ma’lumotlar va qulayliklar mavjud.
+<a href="https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/" target="_blank">13-Maktab 9-D Sinf</a> – bu 13-maktabning 9-D sinfi uchun maxsus yaratilgan web sayt bo‘lib, unda turli xil foydali ma’lumotlar va qulayliklar mavjud.
 
 ## 📌 Saytning asosiy imkoniyatlari
 
@@ -13,7 +13,7 @@
 
 ## 📎 Havola
 Saytga tashrif buyurish uchun quyidagi havolaga bosing:  
-🔗 [13-Maktab 9-D Sinf](https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/)
+🔗 <a href="https://ivenesgaming.github.io/13-Maktab-9-D-Sinf/" target="_blank">13-Maktab 9-D Sinf</a>
 
 ## 📞 Aloqa
 Taklif va savollar bo‘lsa, sayt administratoriga murojaat qilishingiz mumkin.
