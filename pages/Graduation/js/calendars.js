@@ -30,11 +30,21 @@ const students = [
     { raqam: 28, ism: 'Adizjon', familya: 'Sharipov ', tugulgan_kun: '02.07.2009' },
 ];
 
-// O'zbekiston vaqti bilan bugungi sana
-const uzbDate = new Date(new Intl.DateTimeFormat('uz-UZ', { timeZone: 'Asia/Tashkent' }).format(new Date()));
+// O'zbekiston vaqti bilan bugungi sana olish funksiyasi
+async function getUzbekistanDate() {
+    try {
+        const response = await fetch('https://timeapi.io/api/TimeZone/zone?timeZone=Asia/Tashkent');
+        const data = await response.json();
+        return new Date(data.currentLocalTime);
+    } catch (error) {
+        console.error('O\'zbekiston vaqtini olishda xatolik:', error);
+        return new Date(); // Xatolik bo'lsa, joriy vaqtni qaytaradi
+    }
+}
 
 // Tug'ilgan kunni keyingi yilga moslash, agar joriy yilda o'tgan bo'lsa
-function calculateUpcomingBirthday(student) {
+async function calculateUpcomingBirthday(student) {
+    const uzbDate = await getUzbekistanDate();
     const [day, month, year] = student.tugulgan_kun.split('.').map(Number);
     const birthDate = new Date(year, month - 1, day);
     const thisYear = uzbDate.getFullYear();
@@ -77,15 +87,19 @@ function calculateUpcomingBirthday(student) {
 }
 
 // Har bir o'quvchi uchun yaqin tug'ilgan kunlarni hisoblash
-const upcomingBirthdays = students.map(calculateUpcomingBirthday);
-upcomingBirthdays.sort((a, b) => a.daysLeft - b.daysLeft);
+async function calculateAllUpcomingBirthdays() {
+    const upcomingBirthdays = await Promise.all(students.map(calculateUpcomingBirthday));
+    upcomingBirthdays.sort((a, b) => a.daysLeft - b.daysLeft);
+    return upcomingBirthdays;
+}
 
 // Animatsiyali slayder uchun index o'rnatish
 let currentIndex = 0;
 const studentInfoDiv = document.getElementById('student-info');
 
 // Ma'lumotlarni ekranga chiqarish funksiyasi
-function displayStudent() {
+async function displayStudent() {
+    const upcomingBirthdays = await calculateAllUpcomingBirthdays();
     const student = upcomingBirthdays[currentIndex];
 
     // Agar student ma'lumotlari bo'lmasa
