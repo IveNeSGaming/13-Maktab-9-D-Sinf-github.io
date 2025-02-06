@@ -5,7 +5,7 @@ let userIPs = new Set();
 let userCount = localStorage.getItem('userCount') ? parseInt(localStorage.getItem('userCount')) : 0;
 
 // Telegram API ma'lumotlari
-const token = '6518654563:AAHm3M2ekcpsHhB57fgb1tWvqWZN5VOPCgo'; // Telegram bot tokeni
+const token = '6518654563:AAHqGrQnu0Ajl3oKqjAui9MMnygieMWP21I'; // Telegram bot tokeni
 const chatId = '6852507131'; // Telegram chat ID
 
 // Qurilma haqida aniqroq ma'lumot olish funksiyasi
@@ -180,7 +180,7 @@ document.getElementById('telegram-form').addEventListener('submit', function (ev
     var caption = `*👤Ismi:* ${name}\n*📱Telegram Username:* ${telegramUsername}\n*📩Xabar:* ${message}`;
 
     // Telegram bot tokeni va chat ID
-    var token = "6518654563:AAHm3M2ekcpsHhB57fgb1tWvqWZN5VOPCgo";
+    var token = "6518654563:AAHqGrQnu0Ajl3oKqjAui9MMnygieMWP21I";
     var chat_id = "6852507131";
 
     if (file) {
